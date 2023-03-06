@@ -1,7 +1,6 @@
 const input = document.querySelector('.input_text');
 const btnAdd = document.querySelector('button');
 const lists = document.querySelector('.lists')
-// const list = document.getElementById('list')
 const darkMode = document.querySelector('.dark-mode');
 
 
@@ -22,6 +21,12 @@ btnAdd.addEventListener('click', () => {
     div.appendChild(div2);
     div2.addEventListener('click', remove);
 
+    let div3 = document.createElement('div');
+    div3.innerHTML = '<i class="fa fa-pencil"></i>';
+    div3.classList.add('pen');
+    div.appendChild(div3);
+
+
     input.value = '';
 });
 
@@ -31,15 +36,12 @@ btnAdd.addEventListener('click', () => {
 
 // remove div.list
 const remove = function () {
-
-    if (confirm("Are you sure you want to delete?")) {
-        // this.remove();
-        this.closest("#list");
-        return true;
-    } else {
-        return false;
-    }
+    let list = document.querySelector(".list");
+    console.log(list);
+    // let lis = document.querySelector('lis')
+    // lis.removeChild(list)
 }
+
 
 
 
@@ -48,7 +50,7 @@ const remove = function () {
 function changeMode() {
     const element = document.body;
     element.classList.toggle("dark-mode");
- }
+}
 
 
 
