@@ -1,4 +1,4 @@
-const input = document.querySelector('input');
+const input = document.querySelector('.input_text');
 const btnAdd = document.querySelector('button');
 const lists = document.querySelector('.lists')
 // const list = document.getElementById('list')

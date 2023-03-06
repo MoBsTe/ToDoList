@@ -35,7 +35,7 @@ form {
     margin-bottom: 30px;
 }
 
-input {
+.input_text {
     margin-left: 143px;
     text-align: center;
     font-size: 18px;
@@ -126,7 +126,7 @@ button:hover {
     width: 60px;
     height: 34px;
 }
-.switch input {
+.switch .input-mode {
     display: none;
 }
 .slider {
@@ -151,10 +151,10 @@ button:hover {
     border-radius: 50%;
     transition: .4s;
 }
-input:checked + .slider {
+.input-mode:checked + .slider {
     background: #b892ff;
 }
-input:checked + .slider:before {
+.input-mode:checked + .slider:before {
     transform: translateX(26px);
 }
 
@@ -165,6 +165,8 @@ input:checked + .slider:before {
 .change_mode{
     display: flex;
     justify-content: flex-end;
+    /* position: relative;
+    top: -454px; */
     margin-top: 20px;
     margin-right: 50px;
 }
