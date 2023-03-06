@@ -1,15 +1,13 @@
 const input = document.querySelector('input');
 const btnAdd = document.querySelector('button');
 const lists = document.querySelector('.lists')
+// const list = document.getElementById('list')
 const darkMode = document.querySelector('.dark-mode');
-const body = document.querySelector('.body');
-const mode = document.querySelector('.fa-moon-o');
-// const list = document.querySelector('.list');
+
+
 
 
 // add icon mode to html 
-darkMode.innerHTML = '<i class="fa fa-moon-o"></i>';
-
 btnAdd.addEventListener('click', () => {
 
     let div = document.createElement('div');
@@ -24,11 +22,6 @@ btnAdd.addEventListener('click', () => {
     div.appendChild(div2);
     div2.addEventListener('click', remove);
 
-    if (input.value == div) {
-        alert('sdfs')
-    }
-
-
     input.value = '';
 });
 
@@ -41,7 +34,7 @@ const remove = function () {
 
     if (confirm("Are you sure you want to delete?")) {
         // this.remove();
-        this.closest('list');
+        this.closest("#list");
         return true;
     } else {
         return false;
@@ -52,21 +45,15 @@ const remove = function () {
 
 
 // create dark mode 
-darkMode.addEventListener('click', () => {
-    // change bg color body (dark/light)
-    body.classList.toggle('dark_mode_dom')
-
-    // change icons (dark/light) mode
-    mode.classList.toggle('fa-sun-o');
-
-})
+function changeMode() {
+    const element = document.body;
+    element.classList.toggle("dark-mode");
+ }
 
 
 
 
 
 // исправить удаление list
-// исправить dark mode
 // если значение input уже добавлено, вывести предупреждение
 // довавить возможность менять значение list 
-
