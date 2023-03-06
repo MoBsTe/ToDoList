@@ -118,6 +118,12 @@ button:hover {
 
 
 
+.change_mode{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-right: 50px;
+}
 
 
 .switch {
@@ -160,13 +166,4 @@ button:hover {
 
 .dark-mode {
     background: linear-gradient(90deg, rgb(60, 20, 87) 0%, rgb(41, 70, 80) 50%, rgb(87, 62, 28) 100%)
-}
-
-.change_mode{
-    display: flex;
-    justify-content: flex-end;
-    /* position: relative;
-    top: -454px; */
-    margin-top: 20px;
-    margin-right: 50px;
 }
