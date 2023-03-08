@@ -8,32 +8,43 @@ const darkMode = document.querySelector('.dark-mode');
 
 // add icon mode to html 
 btnAdd.addEventListener('click', (e) => {
+
     e.preventDefault();
 
+    // create div list
     let div = document.createElement('div');
     div.classList.add('list');
-    div.textContent = input.value;
     lists.appendChild(div);
 
+    // create div text
+    let text = document.createElement('div');
+    text.classList.add('text')
+    text.textContent = input.value;
+    div.appendChild(text);
 
-    let div2 = document.createElement('div');
-    div2.innerHTML = '<i class="fa fa-close"></i>';
-    div2.classList.add('closet');
-    div.appendChild(div2);
-    div2.addEventListener('click', removel);
+    //create div pen
+    let divClose = document.createElement('div');
+    divClose.innerHTML = '<i class="fa fa-close"></i>';
+    divClose.classList.add('closet');
+    div.appendChild(divClose);
+    divClose.addEventListener('click', removel);
 
+    // create div pen
+    let divPen = document.createElement('div');
+    divPen.innerHTML = '<i class="fa fa-pencil"></i>';
+    divPen.classList.add('pen');
+    div.appendChild(divPen);
+    divPen.addEventListener('click', change_contant);
 
-    let div3 = document.createElement('div');
-    div3.innerHTML = '<i class="fa fa-pencil"></i>';
-    div3.classList.add('pen');
-    div.appendChild(div3);
+    // create div confirm
+    let divConfirm = document.createElement('div');
+    divConfirm.innerHTML = '<i class="fa fa-check"></i>';
+    divConfirm.classList.add('confirm');
+    div.appendChild(divConfirm);
 
 
     input.value = '';
 });
-
-
-
 
 
 // remove div.list
@@ -41,29 +52,40 @@ function removel(e) {
     const item = e.target;
     const todo = item.closest('.list')
     todo.remove();
-    // if (item.classList[0] === "complete-btn") {
-    //     const todo = item.parentElement;
-    //     todo.classList.toggle("completed");
-    //     console.log(todo);
-    // }
+}
+
+// change Text contant 
+function change_contant(e) {
+    const item = e.target;
+    const todo = item.closest('.list');
+    const textDiv = todo.querySelector('.text');
+    textDiv.style.display = "none";
+    const change = document.createElement('input');
+    change.value = textDiv.textContent;
+    change.classList.add('input_change');
+    todo.appendChild(change);
+    const divPen = todo.querySelector('.pen')
+    divPen.style.display = 'none';
+    const divConfirm = todo.querySelector('.confirm');
+    divConfirm.style.display = 'block';
+    divConfirm.addEventListener('click', confirmbtn);
 }
 
 
-function removeLocalTodos(todo) {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-        todos = [];
-    } else {
-        todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    const todoIndex = todo.children[0].innerText;
-    todos.splice(todos.indexOf(todoIndex), 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
+// confirm btn 
+function confirmbtn(e) {
+    const item = e.target;
+    const confirm = item.closest('.list');
+    const text = confirm.querySelector('.text');
+    let change = confirm.querySelector('.input_change');
+    text.textContent = change.value;
+    change.remove();
+    text.style.display = 'block';
+    const divConfirm = confirm.querySelector('.confirm')
+    divConfirm.style.display = 'none'
+    const divPen = confirm.querySelector('.pen')
+    divPen.style.display = 'block';
 }
-
-
-
-
 
 
 // create dark mode 
@@ -76,6 +98,6 @@ function changeMode() {
 
 
 
-// исправить удаление list
 // если значение input уже добавлено, вывести предупреждение
-// довавить возможность менять значение list 
+// поиск 
+
