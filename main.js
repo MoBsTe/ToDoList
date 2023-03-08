@@ -7,7 +7,8 @@ const darkMode = document.querySelector('.dark-mode');
 
 
 // add icon mode to html 
-btnAdd.addEventListener('click', () => {
+btnAdd.addEventListener('click', (e) => {
+    e.preventDefault();
 
     let div = document.createElement('div');
     div.classList.add('list');
@@ -19,7 +20,8 @@ btnAdd.addEventListener('click', () => {
     div2.innerHTML = '<i class="fa fa-close"></i>';
     div2.classList.add('closet');
     div.appendChild(div2);
-    div2.addEventListener('click', remove);
+    div2.addEventListener('click', removel);
+
 
     let div3 = document.createElement('div');
     div3.innerHTML = '<i class="fa fa-pencil"></i>';
@@ -35,12 +37,30 @@ btnAdd.addEventListener('click', () => {
 
 
 // remove div.list
-const remove = function () {
-    let list = document.querySelector(".list");
-    console.log(list);
-    // let lis = document.querySelector('lis')
-    // lis.removeChild(list)
+function removel(e) {
+    const item = e.target;
+    const todo = item.closest('.list')
+    todo.remove();
+    // if (item.classList[0] === "complete-btn") {
+    //     const todo = item.parentElement;
+    //     todo.classList.toggle("completed");
+    //     console.log(todo);
+    // }
 }
+
+
+function removeLocalTodos(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    const todoIndex = todo.children[0].innerText;
+    todos.splice(todos.indexOf(todoIndex), 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
 
 
 
