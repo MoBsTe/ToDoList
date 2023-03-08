@@ -1,6 +1,6 @@
 const input = document.querySelector('.input_text');
 const btnAdd = document.querySelector('button');
-const lists = document.querySelector('.lists')
+const lists = document.querySelector('.lists');
 const darkMode = document.querySelector('.dark-mode');
 
 
@@ -18,7 +18,7 @@ btnAdd.addEventListener('click', (e) => {
 
     // create div text
     let text = document.createElement('div');
-    text.classList.add('text')
+    text.classList.add('text');
     text.textContent = input.value;
     div.appendChild(text);
 
@@ -82,7 +82,7 @@ function confirmbtn(e) {
     change.remove();
     text.style.display = 'block';
     const divConfirm = confirm.querySelector('.confirm')
-    divConfirm.style.display = 'none'
+    divConfirm.style.display = 'none';
     const divPen = confirm.querySelector('.pen')
     divPen.style.display = 'block';
 }
