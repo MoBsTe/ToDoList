@@ -4,11 +4,8 @@ const lists = document.querySelector('.lists');
 const darkMode = document.querySelector('.dark-mode');
 
 
-
-
 // add icon mode to html 
 btnAdd.addEventListener('click', (e) => {
-
     e.preventDefault();
 
     // create div list
@@ -53,6 +50,7 @@ function removel(e) {
     const todo = item.closest('.list')
     todo.remove();
 }
+
 
 // change Text contant 
 function change_contant(e) {

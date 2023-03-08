@@ -191,10 +191,6 @@ button:hover {
     background: linear-gradient(90deg, rgb(60, 20, 87) 0%, rgb(41, 70, 80) 50%, rgb(87, 62, 28) 100%)
 }
 
-/* .fall {
-    transform: translateY(10rem) rotateZ(20deg);
-    opacity: 0;
-} */
 .input_change {
     text-align: center;
     font-size: 18px;
