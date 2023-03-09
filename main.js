@@ -1,4 +1,5 @@
 const input = document.querySelector('.input_text');
+const inputSearch = document.querySelector('.search_input')
 const btnAdd = document.querySelector('button');
 const lists = document.querySelector('.lists');
 const darkMode = document.querySelector('.dark-mode');
@@ -84,6 +85,24 @@ function confirmbtn(e) {
     const divPen = confirm.querySelector('.pen')
     divPen.style.display = 'block';
 }
+
+
+// search input
+inputSearch.addEventListener('input', () => {
+    const searchValue = inputSearch.value.toLowerCase();
+    const list = document.querySelectorAll('.list');
+    list.forEach((element) => {
+        const text = element.querySelector('.text');
+        const textValue = text.textContent.toLowerCase();
+        if (searchValue == "" || textValue.includes(searchValue)) {
+            element.style.display = 'flex';
+        } else {
+            element.style.display = 'none';
+        }
+    })
+    console.log(inputSearch.value);
+})
+
 
 
 // create dark mode 
