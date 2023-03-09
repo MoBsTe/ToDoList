@@ -90,13 +90,13 @@ button:hover {
     font-size: 19px;
 }
 
-.lis {
+.list_containet {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.lists {
+.list_items {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +104,7 @@ button:hover {
     width: 750px;
 }
 
-.list {
+.list_item {
     display: flex;
     padding: 0 30px;
     justify-content: center;

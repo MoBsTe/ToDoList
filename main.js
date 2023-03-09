@@ -1,7 +1,7 @@
 const input = document.querySelector('.input_text');
 const inputSearch = document.querySelector('.search_input')
 const btnAdd = document.querySelector('button');
-const lists = document.querySelector('.lists');
+const listItem = document.querySelector('.list_items');
 const darkMode = document.querySelector('.dark-mode');
 
 
@@ -11,8 +11,8 @@ btnAdd.addEventListener('click', (e) => {
 
     // create div list
     let div = document.createElement('div');
-    div.classList.add('list');
-    lists.appendChild(div);
+    div.classList.add('list_item');
+    listItem.appendChild(div);
 
     // create div text
     let text = document.createElement('div');
@@ -48,7 +48,7 @@ btnAdd.addEventListener('click', (e) => {
 // remove div.list
 function removel(e) {
     const item = e.target;
-    const todo = item.closest('.list')
+    const todo = item.closest('.list_item')
     todo.remove();
 }
 
@@ -56,7 +56,7 @@ function removel(e) {
 // change Text contant 
 function change_contant(e) {
     const item = e.target;
-    const todo = item.closest('.list');
+    const todo = item.closest('.list_item');
     const textDiv = todo.querySelector('.text');
     textDiv.style.display = "none";
     const change = document.createElement('input');
@@ -74,7 +74,7 @@ function change_contant(e) {
 // confirm btn 
 function confirmbtn(e) {
     const item = e.target;
-    const confirm = item.closest('.list');
+    const confirm = item.closest('.list_item');
     const text = confirm.querySelector('.text');
     let change = confirm.querySelector('.input_change');
     text.textContent = change.value;
@@ -90,7 +90,7 @@ function confirmbtn(e) {
 // search input
 inputSearch.addEventListener('input', () => {
     const searchValue = inputSearch.value.toLowerCase();
-    const list = document.querySelectorAll('.list');
+    const list = document.querySelectorAll('.list_item');
     list.forEach((element) => {
         const text = element.querySelector('.text');
         const textValue = text.textContent.toLowerCase();
