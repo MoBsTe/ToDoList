@@ -91,7 +91,7 @@ function confirmbtn(e) {
 inputSearch.addEventListener('input', () => {
     const searchValue = inputSearch.value.toLowerCase();
     const listItem = document.querySelectorAll('.list_item');
-    list.forEach((element) => {
+    listItem.forEach((element) => {
         const text = element.querySelector('.text');
         const textValue = text.textContent.toLowerCase();
         if (searchValue == "" || textValue.includes(searchValue)) {
