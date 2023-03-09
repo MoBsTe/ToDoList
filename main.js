@@ -45,7 +45,7 @@ btnAdd.addEventListener('click', (e) => {
 });
 
 
-// remove div.list
+// remove div.list_item
 function removel(e) {
     const item = e.target;
     const todo = item.closest('.list_item')
@@ -90,7 +90,7 @@ function confirmbtn(e) {
 // search input
 inputSearch.addEventListener('input', () => {
     const searchValue = inputSearch.value.toLowerCase();
-    const list = document.querySelectorAll('.list_item');
+    const listItem = document.querySelectorAll('.list_item');
     list.forEach((element) => {
         const text = element.querySelector('.text');
         const textValue = text.textContent.toLowerCase();
