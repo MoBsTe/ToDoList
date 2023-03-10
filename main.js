@@ -3,6 +3,10 @@ const inputSearch = document.querySelector('.search_input');
 const btnAdd = document.querySelector('button');
 const listItem = document.querySelector('.list_items');
 const darkMode = document.querySelector('.dark-mode');
+const filterOption = document.querySelector(".filter-todo");
+
+
+filterOption.addEventListener("click", filterTodo);
 
 
 // add icon mode to html 
@@ -60,6 +64,7 @@ function change_contant(e) {
     const textDiv = todo.querySelector('.text');
     textDiv.style.display = "none";
     const change = document.createElement('input');
+    // todo.style.justifyContent = 'space-between';
     change.value = textDiv.textContent;
     change.classList.add('input_change');
     todo.appendChild(change);
@@ -69,6 +74,7 @@ function change_contant(e) {
     divConfirm.style.display = 'block';
     divConfirm.addEventListener('click', confirmbtn);
 };
+
 
 
 // confirm btn 
@@ -84,6 +90,7 @@ function confirmbtn(e) {
     divConfirm.style.display = 'none';
     const divPen = confirm.querySelector('.pen');
     divPen.style.display = 'block';
+    // confirm.style.justifyContent = 'center';
 };
 
 
@@ -102,6 +109,32 @@ inputSearch.addEventListener('input', () => {
     });
     console.log(inputSearch.value);
 });
+
+
+// function filterTodo(e) {
+//     const todos = listItem.childNodes;
+//     todos.forEach(function (todo) {
+//         switch (e.target.value) {
+//             case "all":
+//                 todo.style.display = "flex";
+//                 break;
+//             case "home":
+//                 if (todo.classList.contains("completed")) {
+//                     todo.style.display = "flex";
+//                 } else {
+//                     todo.style.display = "none";
+//                 }
+//                 break;
+//             case "work":
+//                 if (!todo.classList.contains("completed")) {
+//                     todo.style.display = "flex";
+//                 } else {
+//                     todo.style.display = "none";
+//                 }
+//         }
+//     });
+// }
+
 
 
 
