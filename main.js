@@ -6,7 +6,7 @@ const darkMode = document.querySelector('.dark-mode');
 const filterOption = document.querySelector(".filter-todo");
 
 
-filterOption.addEventListener("click", filterTodo);
+// filterOption.addEventListener("click", filterTodo);
 
 
 // add icon mode to html 
