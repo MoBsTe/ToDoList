@@ -5,10 +5,6 @@ const listItem = document.querySelector('.list_items');
 const darkMode = document.querySelector('.dark-mode');
 const filterOption = document.querySelector(".filter-todo");
 
-
-// filterOption.addEventListener("click", filterTodo);
-
-
 // add icon mode to html 
 btnAdd.addEventListener('click', (e) => {
     e.preventDefault();
@@ -109,34 +105,6 @@ inputSearch.addEventListener('input', () => {
     });
     console.log(inputSearch.value);
 });
-
-
-// function filterTodo(e) {
-//     const todos = listItem.childNodes;
-//     todos.forEach(function (todo) {
-//         switch (e.target.value) {
-//             case "all":
-//                 todo.style.display = "flex";
-//                 break;
-//             case "home":
-//                 if (todo.classList.contains("completed")) {
-//                     todo.style.display = "flex";
-//                 } else {
-//                     todo.style.display = "none";
-//                 }
-//                 break;
-//             case "work":
-//                 if (!todo.classList.contains("completed")) {
-//                     todo.style.display = "flex";
-//                 } else {
-//                     todo.style.display = "none";
-//                 }
-//         }
-//     });
-// }
-
-
-
 
 // create dark mode 
 function changeMode() {
