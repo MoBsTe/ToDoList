@@ -1,5 +1,5 @@
 const express = require("express");
-// const nodemon = require("nodemon");
+
 const path = require("path");
 const middleware = express.static(path.join(__dirname, './../public'));
 const app = express();
