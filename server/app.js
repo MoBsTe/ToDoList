@@ -9,8 +9,8 @@ let mysql = require('mysql');
 
 
 let connection = mysql.createConnection({
-    host: '172.22.48.1',
-    user: 'Valery2',
+    host: '172.22.80.1',
+    user: 'Valery',
     password: 'Mysql123123123!',
     database: 'todolist'
 });
@@ -37,14 +37,14 @@ connection.connect(function (err) {
 
 
 
-app.get("/orders", (req, res, next) => {
-    connection.query('SELECT id, description FROM todolists', function (error, results, fields) {
-        if (error) throw error;
-        res.status(200).json(results);
-        console.log(results);
-    });
+// app.get("/orders", (req, res, next) => {
+//     connection.query('SELECT id, description FROM todolists', function (error, results, fields) {
+//         if (error) throw error;
+//         res.status(200).json(results);
+//         console.log(results);
+//     });
 
-});
+// });
 
 
 
