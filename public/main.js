@@ -1,4 +1,4 @@
-const input = document.querySelector('.input_text');
+// const input = document.querySelector('.input_text');
 const inputSearch = document.querySelector('.search_input');
 const btnAdd = document.querySelector('button');
 const listItem = document.querySelector('.list_items');
@@ -9,39 +9,99 @@ const filterOption = document.querySelector(".filter-todo");
 btnAdd.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // create div list
-    let div = document.createElement('div');
-    div.classList.add('list_item');
-    listItem.appendChild(div);
-
-    // create div text
-    let text = document.createElement('div');
-    text.classList.add('text');
-    text.textContent = input.value;
-    div.appendChild(text);
-
-    //create div closet
-    let divClose = document.createElement('div');
-    divClose.innerHTML = '<i class="fa fa-close"></i>';
-    divClose.classList.add('closet');
-    div.appendChild(divClose);
-    divClose.addEventListener('click', removel);
-
-    // create div pen
-    let divPen = document.createElement('div');
-    divPen.innerHTML = '<i class="fa fa-pencil"></i>';
-    divPen.classList.add('pen');
-    div.appendChild(divPen);
-    divPen.addEventListener('click', change_contant);
-
-    // create div confirm
-    let divConfirm = document.createElement('div');
-    divConfirm.innerHTML = '<i class="fa fa-check"></i>';
-    divConfirm.classList.add('confirm');
-    div.appendChild(divConfirm);
+    axios.post('/order', {
+        description: document.querySelector('.input_text').value,
+    })
+        .then(function (response) {
+            console.log(response);
+        })
 
 
-    input.value = '';
+
+    axios.get('/orders')
+        .then((response) => {
+
+            let jsonResponse = response.data;
+            console.log(jsonResponse);
+
+
+
+            for (let i = 0; i < jsonResponse.length; i++) {
+                // create div list
+                let div = document.createElement('div');
+                div.classList.add('list_item');
+                listItem.appendChild(div);
+
+                // create div text
+                let text = document.createElement('div');
+                text.classList.add('text');
+                text.innerHTML = jsonResponse[i].description;
+                div.appendChild(text);
+
+                //create div closet
+                let divClose = document.createElement('div');
+                divClose.innerHTML = '<i class="fa fa-close"></i>';
+                divClose.classList.add('closet');
+                div.appendChild(divClose);
+                divClose.addEventListener('click', removel);
+
+                // create div pen
+                let divPen = document.createElement('div');
+                divPen.innerHTML = '<i class="fa fa-pencil"></i>';
+                divPen.classList.add('pen');
+                div.appendChild(divPen);
+                divPen.addEventListener('click', change_contant);
+
+                // create div confirm
+                let divConfirm = document.createElement('div');
+                divConfirm.innerHTML = '<i class="fa fa-check"></i>';
+                divConfirm.classList.add('confirm');
+                div.appendChild(divConfirm);
+
+
+                // input.value = '';
+            }
+
+
+        });
+
+    // // create div list
+    // let div = document.createElement('div');
+    // div.classList.add('list_item');
+    // listItem.appendChild(div);
+
+    // // create div text
+    // let text = document.createElement('div');
+    // text.classList.add('text');
+    // text.textContent = input.value;
+    // div.appendChild(text);
+
+    // //create div closet
+    // let divClose = document.createElement('div');
+    // divClose.innerHTML = '<i class="fa fa-close"></i>';
+    // divClose.classList.add('closet');
+    // div.appendChild(divClose);
+    // divClose.addEventListener('click', removel);
+
+    // // create div pen
+    // let divPen = document.createElement('div');
+    // divPen.innerHTML = '<i class="fa fa-pencil"></i>';
+    // divPen.classList.add('pen');
+    // div.appendChild(divPen);
+    // divPen.addEventListener('click', change_contant);
+
+    // // create div confirm
+    // let divConfirm = document.createElement('div');
+    // divConfirm.innerHTML = '<i class="fa fa-check"></i>';
+    // divConfirm.classList.add('confirm');
+    // div.appendChild(divConfirm);
+
+
+    // input.value = '';
+
+
+
+
 });
 
 
@@ -53,7 +113,7 @@ function removel(e) {
 };
 
 
-// change Text contant 
+// change Text contant
 function change_contant(e) {
     const item = e.target;
     const todo = item.closest('.list_item');
@@ -73,7 +133,7 @@ function change_contant(e) {
 
 
 
-// confirm btn 
+// confirm btn
 function confirmbtn(e) {
     const item = e.target;
     const confirm = item.closest('.list_item');
@@ -106,7 +166,7 @@ inputSearch.addEventListener('input', () => {
     console.log(inputSearch.value);
 });
 
-// create dark mode 
+// create dark mode
 function changeMode() {
     const element = document.body;
     element.classList.toggle("dark-mode");
