@@ -5,111 +5,78 @@ const listItem = document.querySelector('.list_items');
 const darkMode = document.querySelector('.dark-mode');
 const filterOption = document.querySelector(".filter-todo");
 
-// add icon mode to html 
-btnAdd.addEventListener('click', (e) => {
-    e.preventDefault();
 
+axios.get('/orders')
+    .then((response) => {
+        let jsonResponse = response.data;
+        console.log(jsonResponse);
+
+        for (let i = 0; i < jsonResponse.length; i++) {
+            // create div list
+            let div = document.createElement('div');
+            div.classList.add('list_item');
+            div.id = jsonResponse[i].id;
+            listItem.appendChild(div);
+
+            // create div text
+            let text = document.createElement('div');
+            text.classList.add('text');
+            text.innerHTML = jsonResponse[i].description;
+            div.appendChild(text);
+
+            //create div closet
+            let divClose = document.createElement('div');
+            divClose.innerHTML = '<i class="fa fa-close"></i>';
+            divClose.classList.add('closet');
+            div.appendChild(divClose);
+            divClose.addEventListener('click', removel);
+
+            // create div pen
+            let divPen = document.createElement('div');
+            divPen.innerHTML = '<i class="fa fa-pencil"></i>';
+            divPen.classList.add('pen');
+            div.appendChild(divPen);
+            divPen.addEventListener('click', change_contant);
+
+            // create div confirm
+            let divConfirm = document.createElement('div');
+            divConfirm.innerHTML = '<i class="fa fa-check"></i>';
+            divConfirm.classList.add('confirm');
+            div.appendChild(divConfirm);
+            // input.value = '';
+
+            // location.reload();
+        }
+    });
+
+
+
+// add icon mode to html 
+btnAdd.addEventListener('click', () => {
     axios.post('/order', {
-        description: document.querySelector('.input_text').value,
+        description: document.querySelector('.input_text').value
     })
         .then(function (response) {
             console.log(response);
+
         })
-
-
-
-    axios.get('/orders')
-        .then((response) => {
-
-            let jsonResponse = response.data;
-            console.log(jsonResponse);
-
-
-
-            for (let i = 0; i < jsonResponse.length; i++) {
-                // create div list
-                let div = document.createElement('div');
-                div.classList.add('list_item');
-                listItem.appendChild(div);
-
-                // create div text
-                let text = document.createElement('div');
-                text.classList.add('text');
-                text.innerHTML = jsonResponse[i].description;
-                div.appendChild(text);
-
-                //create div closet
-                let divClose = document.createElement('div');
-                divClose.innerHTML = '<i class="fa fa-close"></i>';
-                divClose.classList.add('closet');
-                div.appendChild(divClose);
-                divClose.addEventListener('click', removel);
-
-                // create div pen
-                let divPen = document.createElement('div');
-                divPen.innerHTML = '<i class="fa fa-pencil"></i>';
-                divPen.classList.add('pen');
-                div.appendChild(divPen);
-                divPen.addEventListener('click', change_contant);
-
-                // create div confirm
-                let divConfirm = document.createElement('div');
-                divConfirm.innerHTML = '<i class="fa fa-check"></i>';
-                divConfirm.classList.add('confirm');
-                div.appendChild(divConfirm);
-
-
-                // input.value = '';
-            }
-
-
-        });
-
-    // // create div list
-    // let div = document.createElement('div');
-    // div.classList.add('list_item');
-    // listItem.appendChild(div);
-
-    // // create div text
-    // let text = document.createElement('div');
-    // text.classList.add('text');
-    // text.textContent = input.value;
-    // div.appendChild(text);
-
-    // //create div closet
-    // let divClose = document.createElement('div');
-    // divClose.innerHTML = '<i class="fa fa-close"></i>';
-    // divClose.classList.add('closet');
-    // div.appendChild(divClose);
-    // divClose.addEventListener('click', removel);
-
-    // // create div pen
-    // let divPen = document.createElement('div');
-    // divPen.innerHTML = '<i class="fa fa-pencil"></i>';
-    // divPen.classList.add('pen');
-    // div.appendChild(divPen);
-    // divPen.addEventListener('click', change_contant);
-
-    // // create div confirm
-    // let divConfirm = document.createElement('div');
-    // divConfirm.innerHTML = '<i class="fa fa-check"></i>';
-    // divConfirm.classList.add('confirm');
-    // div.appendChild(divConfirm);
-
-
-    // input.value = '';
-
-
-
-
 });
 
 
 // remove div.list_item
 function removel(e) {
     const item = e.target;
-    const todo = item.closest('.list_item');
-    todo.remove();
+    const todo = item.closest(".list_item").id;
+    let num = Number(todo)
+    console.log(num);
+
+    axios.post('/remove', {
+        item: num
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+    location.reload();
 };
 
 

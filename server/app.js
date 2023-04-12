@@ -9,9 +9,9 @@ let mysql = require('mysql');
 
 
 let connection = mysql.createConnection({
-    host: '---',
+    host: '----',
     user: '---',
-    password: '-----',
+    password: '---',
     database: 'todolist'
 });
 
@@ -29,6 +29,13 @@ app.post("/order", (req, res, next) => {
     connection.query('INSERT INTO todolists SET ?', post, function (error, result, fields) {
         if (error) throw err;
         console.log("1 record inserted");
+    })
+});
+
+app.post("/remove", (req, res, next) => {
+    connection.query('DELETE FROM todolists WHERE id = ?', req.body.item, function (error, result, fields) {
+        if (error) throw err;
+        console.log("1 record delated");
     })
 });
 
